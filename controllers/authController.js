@@ -54,8 +54,8 @@ exports.generateCode = async (req, res) => {
 	let code = await randomString(20, AuthCodeModel);
 	try {
 		await AuthCodeModel.create({code, clientId: req.body.client._id, userId: req.body.user._id});
-		return res.status(200).json({message: 'Successfully logged in', code: code});
-		// return res.redirect(req.body.client.redirectUri+'?code='+code)
+		// return res.status(200).json({message: 'Successfully logged in', code: code});
+		return res.redirect(req.body.client.redirectUri+'?code='+code)
 	} catch (err) {
 		console.log(err);
 		return res.status(400).json({message: 'Failed to login'});
