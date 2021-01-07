@@ -7,8 +7,7 @@ const engine = require('ejs-locals');
 const cors = require('cors');
 
 //Routes
-const sampleRouter = require('./routes/sample');
-const {sample} = require('./controllers/sampleController.js');
+const authRouter = require('./routes/auth');
 
 const app = express();
 
@@ -43,7 +42,7 @@ app.use(function (req, res, next) {
 	next();
 });
 
-app.use('/sample', sampleRouter);
+app.use('/auth', authRouter);
 
 //Listen
 app.listen(port, host, () => {
